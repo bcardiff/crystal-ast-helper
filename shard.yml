@@ -1,0 +1,18 @@
+name: ast_helper
+version: 0.1.0
+
+authors:
+  - Brian J. Cardiff <bcardiff@gmail.com>
+
+targets:
+  ast_helper:
+    main: src/ast_helper.cr
+
+dependencies:
+  redomi:
+    github: bcardiff/redomi
+    branch: master
+
+crystal: 0.26.1
+
+license: MIT

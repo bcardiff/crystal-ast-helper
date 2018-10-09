@@ -1,0 +1,6 @@
+version: 1.0
+shards:
+  redomi:
+    github: bcardiff/redomi
+    commit: d3fa9a3528dd007ac948676506d53f6da2cfe1a2
+
