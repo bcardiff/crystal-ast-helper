@@ -22,9 +22,13 @@ class Crystal::Formatter
     nodes = parser.parse
 
     formatter = new(source)
-    formatter.skip_space_or_newline
-    nodes.accept formatter
-    {formatter.finish, formatter.@lexer}
+    begin
+      formatter.skip_space_or_newline
+      nodes.accept formatter
+      {nil, formatter.finish, formatter.@lexer}
+    rescue e
+      {e, "", formatter.@lexer}
+    end
   end
 end
 
@@ -188,9 +192,14 @@ def render(tree, ui_tokens, text_area, error_container, formatted, formatted_tok
   end
 
   begin
-    formatted_source, formatter_lexer = Crystal::Formatter.debug_format(source)
+    e, formatted_source, formatter_lexer = Crystal::Formatter.debug_format(source)
     formatted.text_content = formatted_source
     render_tokens(formatted_tokens_container, formatter_lexer.emitted_tokens)
+
+    if e
+      formatted.class_name = "error"
+      error_container.text_content = e.to_s
+    end
   rescue e
     formatted.class_name = "error"
     error_container.text_content = e.to_s
