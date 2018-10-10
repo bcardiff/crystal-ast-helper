@@ -11,6 +11,12 @@ $ crystal src/ast_helper.cr
 $ open http://localhost:9090
 ```
 
+If you want to use with crystal head use:
+
+```
+$ path/to/crystal-clone/bin/crystal src/ast_helper.cr
+```
+
 ## Usage
 
 When opening [http://localhost:9090](http://localhost:9090) you will be able to:
@@ -18,6 +24,7 @@ When opening [http://localhost:9090](http://localhost:9090) you will be able to:
 * input source
 * view the output according to the formatter
 * view the tokens returned by the lexer used for parsing and for formatting
+  * view the tokens consumed so far even if the formatter fails
 * view the stack trace of each token
 * view the AST of the whole program
 
