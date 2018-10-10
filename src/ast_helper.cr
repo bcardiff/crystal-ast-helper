@@ -73,6 +73,17 @@ class DumpVisitor < Crystal::Visitor
     append_property "expressions", node.expressions
   end
 
+  def append_properties(node : Crystal::Case)
+    append_property "cond", node.cond
+    append_property "whens", node.whens
+    append_property "else", node.else
+  end
+
+  def append_properties(node : Crystal::When)
+    append_property "conds", node.conds
+    append_property "body", node.body
+  end
+
   def append_property(name, value)
     render_value(create_ui_property_node(name)[:value_node], value)
   end
