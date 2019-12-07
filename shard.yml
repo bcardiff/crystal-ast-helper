@@ -13,6 +13,6 @@ dependencies:
     github: bcardiff/redomi
     branch: master
 
-crystal: 0.26.1
+crystal: 0.31.0
 
 license: MIT

@@ -67,6 +67,29 @@ class DumpVisitor < Crystal::Visitor
   def append_properties(node)
   end
 
+  def append_properties(node : Crystal::Def)
+    # property free_vars : Array(String)?
+    # property receiver : ASTNode?
+    append_property "name", node.name
+    append_property "args", node.args
+    # property double_splat : Arg?
+    append_property "body", node.body
+    # property block_arg : Arg?
+    # property return_type : ASTNode?
+    # property yields : Int32?
+    # property splat_index : Int32?
+    # property doc : String?
+    # property visibility = Visibility::Public
+  end
+
+  def append_properties(node : Crystal::Arg)
+    append_property "name", node.name
+    # property external_name : String
+    append_property "default_value", node.default_value
+    # property restriction : ASTNode?
+    # property doc : String?
+  end
+
   def append_properties(node : Crystal::Call)
     append_property "obj", node.obj
     append_property "name", node.name
